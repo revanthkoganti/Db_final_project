@@ -1,16 +1,29 @@
 package com.uga.carRental.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.uga.carRental.entity.Booking;
+import com.uga.carRental.entity.Car;
 import com.uga.carRental.entity.Customer;
 import com.uga.carRental.entity.LoginRequest;
+import com.uga.carRental.response.FilterResponse;
+import com.uga.carRental.response.InsuranceResponse;
+import com.uga.carRental.response.Response;
+import com.uga.carRental.entity.CarSearchFilter;
 import com.uga.carRental.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController
@@ -27,7 +40,7 @@ public class CustomerController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<?> signIn(@Valid @RequestBody LoginRequest request){
+	public Response signIn(@Valid @RequestBody LoginRequest request){
 
 		return userService.signIn(request);
 
@@ -35,8 +48,36 @@ public class CustomerController {
 	}
 
 	@PostMapping("/register")
-	public ResponseEntity<?>register(@Valid @RequestBody Customer customer){
+	public Response register(@Valid @RequestBody Customer customer){
 		return userService.register(customer);
 
 	}
+    @GetMapping("/search")
+    public FilterResponse searchAndFilterCars(@RequestBody CarSearchFilter searchFilter) {
+
+    	FilterResponse filteredCars = userService.searchAndFilterCars(searchFilter);
+
+        return filteredCars;
+    }
+    @GetMapping("/insurance")
+    public InsuranceResponse getAllInsurance(HttpServletRequest request) {
+
+    	InsuranceResponse insuranceResponse = userService.getAllInsurance();
+
+        return insuranceResponse;
+    }
+    @PostMapping("/booking")
+    public Response addBooking(@RequestBody Booking booking) {
+        try {
+  
+            Response savedBooking = userService.addBooking(booking);
+            
+            return savedBooking;
+        } catch (Exception e) {
+        	Response response = new Response();
+        	response.setMessage("Failed to add booking: " + e.getMessage());
+        	response.setStatus(Boolean.FALSE);
+            return response;
+        }
+    }
 }
