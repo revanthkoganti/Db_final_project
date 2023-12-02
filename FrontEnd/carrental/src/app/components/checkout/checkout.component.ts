@@ -56,7 +56,7 @@ export class CheckoutComponent {
     this.http.post(url,req).subscribe((res:any)=>{
       if(res.status=== true){
         alert("booking successful");
-        this.router.navigateByUrl("home");
+        this.router.navigateByUrl("/home");
       }
     })
   }

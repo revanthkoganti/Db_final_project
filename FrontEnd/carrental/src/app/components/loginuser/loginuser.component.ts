@@ -36,7 +36,7 @@ export class LoginuserComponent implements OnInit {
     this.http.post(url,req).subscribe((res:any)=>{
       this.carservice.licenseNumber=res.licenseNumber;
       alert('Login successful!');
-      this.router.navigateByUrl("home");
+      this.router.navigateByUrl("/home");
     })
     console.log('Form submitted:', this.loginForm.value);
   }

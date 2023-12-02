@@ -60,6 +60,6 @@ export class HomeComponent {
   }
   rent(car:any){
     this.carservice.selectedcar=car;
-    this.router.navigateByUrl("home");
+    this.router.navigateByUrl("/checkout");
   }
 }
