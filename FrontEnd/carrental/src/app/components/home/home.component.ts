@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +41,8 @@ export class HomeComponent {
   
   carForm!:FormGroup
   showcars: boolean=false;
-  constructor(private fb: FormBuilder,private http:HttpClient) {}
+  constructor(private fb: FormBuilder,private http:HttpClient,private router:Router
+    ,private carservice:CarService) {}
 
   ngOnInit() {
      this.carForm= this.fb.group({
@@ -73,5 +76,8 @@ export class HomeComponent {
       console.log('Form submitted!', this.carForm.value);
     }
   }
-  
+  rent(car:any){
+    this.carservice.selectedcar=car;
+    this.router.navigateByUrl("home");
+  }
 }

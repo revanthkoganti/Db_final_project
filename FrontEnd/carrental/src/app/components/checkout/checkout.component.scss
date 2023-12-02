@@ -1,0 +1,19 @@
+.car-card {
+    max-width: 300px;
+    margin: 10px;
+  }
+  
+  mat-card img {
+    max-width: 100%;
+    height: auto;
+  }
+  .field-row {
+    margin-bottom: 20px;
+  }
+  .container {
+    height: 50vh; /* Set the height to the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

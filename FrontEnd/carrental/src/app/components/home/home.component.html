@@ -59,7 +59,7 @@
       <p>Rental Price: \${{ car.rentalPrice }}/day</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="primary">Rent Now</button>
+      <button mat-button color="primary" (click)="rent(car)">Rent Now</button>
     </mat-card-actions>
   </mat-card>
 </div>
