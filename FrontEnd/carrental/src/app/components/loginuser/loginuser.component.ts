@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loginuser',
@@ -11,7 +14,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginuserComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private http:HttpClient,private _snackBar: MatSnackBar,
+    private router:Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -23,7 +27,16 @@ export class LoginuserComponent implements OnInit {
   }
 
   onSubmit() {
-    // Handle login logic here
+    let req={
+      "password": this.loginForm.value.password,
+      "email": this.loginForm.value.email
+    }
+    let url="http://localhost:8080/login";
+    this.http.post(url,req).subscribe((res)=>{
+      this._snackBar.open("Login Successful", "Done");
+      this.router.navigateByUrl("home");
+    })
+
     console.log('Form submitted:', this.loginForm.value);
   }
 }

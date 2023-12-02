@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -34,16 +35,29 @@ export class HomeComponent {
     
   ];
   // Properties for storing form data
-  selectedCarType: string = '';
-  pickUpLocation: string = '';
-  dropOffLocation: string = '';
-  pickUpDate: Date | null = null;
-  dropOffDate: Date | null = null;
+  
+  carForm!:FormGroup
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit() {
+     this.carForm= this.fb.group({
+      selectedCarType: ['', Validators.required],
+      pickUpLocation: ['', Validators.required],
+      dropOffLocation: ['', Validators.required],
+      pickUpDate: [null, Validators.required],
+      dropOffDate: [null, Validators.required],
+    });
+  }
 
   // Method to handle form submission
   searchCars() {
     // You can perform actions here based on the selected car type and other form data
     // For example, you can filter the cars array based on the selected criteria.
-    console.log('Search Cars:', this.selectedCarType, this.pickUpLocation, this.dropOffLocation, this.pickUpDate, this.dropOffDate);
+    //console.log('Search Cars:', this.selectedCarType, this.pickUpLocation, this.dropOffLocation, this.pickUpDate, this.dropOffDate);
+    if (this.carForm.valid) {
+      // Perform the form submission logic here
+      console.log('Form submitted!', this.carForm.value);
+    }
   }
+  
 }
