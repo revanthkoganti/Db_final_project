@@ -41,8 +41,8 @@ export class HomeComponent {
     if (this.carForm.valid) {
       let req={
         "pickupDate": this.carForm.value.pickUpDate,
-        "returnDate": this.carForm.value.returnDate,
-        "location": this.carForm.value.location,
+        "returnDate": this.carForm.value.dropOffDate,
+        "location": this.carForm.value.pickUpLocation,
         "categoryId": this.carForm.value.selectedCarType
       }
       this.carservice.searchreq=req;
