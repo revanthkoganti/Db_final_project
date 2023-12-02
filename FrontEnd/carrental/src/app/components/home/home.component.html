@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <!-- Book a Car Section -->
-<section fxLayout="column" fxLayoutAlign="center center" class="container">
+<section fxLayout="column" fxLayoutAlign="center center" class="container" [formGroup]="carForm">
   <mat-card fxFlex="70%" class="booking-card">
     <mat-card-title>Book a Car</mat-card-title>
     <mat-card-content fxLayout="column">
@@ -9,7 +9,7 @@
       <div fxLayout="row" class="field-row">
         <mat-form-field fxFlex fxLayoutGap="20px">
           <mat-label>Select your car type</mat-label>
-          <mat-select formControlName="selectedCategoryId">
+          <mat-select formControlName="selectedCarType">
             <mat-option *ngFor="let carType of options" [value]="carType.categoryId">
               {{ carType.categoryName }}
             </mat-option>
@@ -18,7 +18,7 @@
 
         <mat-form-field fxFlex fxLayoutGap="20px">
           <mat-label>Pick up location</mat-label>
-          <input matInput placeholder="Enter pick up location" />
+          <input matInput placeholder="Enter pick up location"  formControlName="pickUpLocation"/>
         </mat-form-field>
         
       </div>
@@ -29,14 +29,14 @@
 
         <mat-form-field fxFlex fxLayoutGap="20px">
           <mat-label>Pick up date</mat-label>
-          <input matInput [matDatepicker]="picker1" placeholder="Select pick up date" />
+          <input matInput [matDatepicker]="picker1" placeholder="Select pick up date" formControlName="pickUpDate"/>
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field fxFlex fxLayoutGap="20px">
           <mat-label>Drop off date</mat-label>
-          <input matInput [matDatepicker]="picker2" placeholder="Select drop off date" />
+          <input matInput [matDatepicker]="picker2" placeholder="Select drop off date" formControlName="dropOffDate"/>
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
