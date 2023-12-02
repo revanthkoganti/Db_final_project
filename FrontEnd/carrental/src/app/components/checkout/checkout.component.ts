@@ -19,8 +19,8 @@ export class CheckoutComponent {
       insurance: [null], 
     });
     let url="http://localhost:8080/insurance"
-    this.http.get(url).subscribe((res)=>{
-      
+    this.http.get(url).subscribe((res:any)=>{
+      this.insuranceOptions=res.carRentalInsurance;
     })
   }
   bookCar(){
@@ -30,7 +30,7 @@ export class CheckoutComponent {
       "returnDate": this.carservice.searchreq.returnDate,
       "bookingStatus": "CONFIRMED",
       "carRentalInsurance": {
-        "insuranceCode": "1201"
+        "insuranceCode": this.carForm.value.insurance
       },
       "car": {
         "registrationNo": this.carservice.selectedcar.registrationNo
