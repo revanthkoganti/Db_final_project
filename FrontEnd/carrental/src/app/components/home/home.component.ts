@@ -33,4 +33,17 @@ export class HomeComponent {
     },
     
   ];
+  // Properties for storing form data
+  selectedCarType: string = '';
+  pickUpLocation: string = '';
+  dropOffLocation: string = '';
+  pickUpDate: Date | null = null;
+  dropOffDate: Date | null = null;
+
+  // Method to handle form submission
+  searchCars() {
+    // You can perform actions here based on the selected car type and other form data
+    // For example, you can filter the cars array based on the selected criteria.
+    console.log('Search Cars:', this.selectedCarType, this.pickUpLocation, this.dropOffLocation, this.pickUpDate, this.dropOffDate);
+  }
 }

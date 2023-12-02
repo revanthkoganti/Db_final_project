@@ -1,6 +1,57 @@
 <app-navbar></app-navbar>
-<div fxLayout="row wrap" fxLayoutAlign="center">
-  <mat-card fxFlex="calc(33.33% - 20px)" fxFlex.gt-sm="calc(20% - 20px)" *ngFor="let car of cars" class="car-card">
+<!-- Book a Car Section -->
+<section fxLayout="column" fxLayoutAlign="center center" class="container">
+  <mat-card fxFlex="70%" class="booking-card">
+    <mat-card-title>Book a Car</mat-card-title>
+    <mat-card-content fxLayout="column">
+
+      <!-- First Line of Fields -->
+      <div fxLayout="row" class="field-row">
+        <mat-form-field fxFlex fxLayoutGap="20px">
+          <mat-label>Select your car type</mat-label>
+          <mat-select>
+            <mat-option value="sedan">Sedan</mat-option>
+            <mat-option value="suv">SUV</mat-option>
+            <mat-option value="hatchback">Hatchback</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex fxLayoutGap="20px">
+          <mat-label>Pick up location</mat-label>
+          <input matInput placeholder="Enter pick up location" />
+        </mat-form-field>
+        <mat-form-field fxFlex fxLayoutGap="20px">
+          <mat-label>Drop off location</mat-label>
+          <input matInput placeholder="Enter drop off location" />
+        </mat-form-field>
+      </div>
+
+      <!-- Second Line of Fields -->
+      <div fxLayout="row" class="field-row">
+        
+
+        <mat-form-field fxFlex fxLayoutGap="20px">
+          <mat-label>Pick up date</mat-label>
+          <input matInput [matDatepicker]="picker1" placeholder="Select pick up date" />
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field fxFlex fxLayoutGap="20px">
+          <mat-label>Drop off date</mat-label>
+          <input matInput [matDatepicker]="picker2" placeholder="Select drop off date" />
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Search Cars</button>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+  <mat-card fxFlex="calc(25% - 20px)" fxFlex.gt-sm="calc(25% - 20px)" *ngFor="let car of cars" class="car-card">
     <img [src]="car.imageUrl" alt="{{ car.brand }} {{ car.model }}" mat-card-image />
     <mat-card-content>
       <h3>{{ car.brand }} {{ car.model }}</h3>
@@ -12,3 +63,7 @@
     </mat-card-actions>
   </mat-card>
 </div>
+
+
+
+
