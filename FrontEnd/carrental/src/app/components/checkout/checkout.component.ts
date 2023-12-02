@@ -7,5 +7,5 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent {
-  constructor(private carservice:CarService) {}
+  constructor(public carservice:CarService) {}
 }

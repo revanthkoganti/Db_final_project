@@ -20,6 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CommonModule,
     MatInputModule,
     MatSelectModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    HttpClientModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
