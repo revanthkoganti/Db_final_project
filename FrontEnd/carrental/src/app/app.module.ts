@@ -19,13 +19,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisteruserComponent,
     HomeComponent,
     NavbarComponent,
-    LoginuserComponent
+    LoginuserComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
