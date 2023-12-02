@@ -16,6 +16,7 @@ import jakarta.validation.Valid;
 @Service
 public class UserServiceImpl implements UserService {
 
+	
 	@Autowired
 	UserRepo repo;
 
@@ -24,7 +25,11 @@ public class UserServiceImpl implements UserService {
 		String email = request.getEmail();
 		String password = request.getPassword();
 		Customer customer = repo.findByEmail(email);
-		if (customer.getPassword() == password) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		String encryptedPassword = encoder.encode(password);
+		boolean passwordMatcher = encoder.matches(password, customer.getPassword());
+	
+		if ((customer.getEmail().toString().equals(email)) && passwordMatcher) {
 			return new ResponseEntity<>("UserLogged in Successfully", HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>("User login Failed", HttpStatus.BAD_REQUEST);
@@ -36,10 +41,11 @@ public class UserServiceImpl implements UserService {
 
 		Customer customerData = repo.findByEmail(customer.getEmail());
 		if (customerData == null) {
-
+			
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			String encryptedPassword = encoder.encode(customer.getPassword());
 			customer.setPassword(encryptedPassword);
+			
 			repo.save(customer);
 			return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
 		} else {
