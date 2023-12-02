@@ -20,10 +20,7 @@
           <mat-label>Pick up location</mat-label>
           <input matInput placeholder="Enter pick up location" />
         </mat-form-field>
-        <mat-form-field fxFlex fxLayoutGap="20px">
-          <mat-label>Drop off location</mat-label>
-          <input matInput placeholder="Enter drop off location" />
-        </mat-form-field>
+        
       </div>
 
       <!-- Second Line of Fields -->
@@ -45,7 +42,7 @@
         </mat-form-field>
       </div>
 
-      <button mat-raised-button color="primary" type="submit">Search Cars</button>
+      <button mat-raised-button color="primary" type="submit" (click)="searchCars()">Search Cars</button>
     </mat-card-content>
   </mat-card>
 </section>
