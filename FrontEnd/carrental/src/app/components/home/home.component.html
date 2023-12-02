@@ -9,10 +9,10 @@
       <div fxLayout="row" class="field-row">
         <mat-form-field fxFlex fxLayoutGap="20px">
           <mat-label>Select your car type</mat-label>
-          <mat-select>
-            <mat-option value="sedan">Sedan</mat-option>
-            <mat-option value="suv">SUV</mat-option>
-            <mat-option value="hatchback">Hatchback</mat-option>
+          <mat-select formControlName="selectedCategoryId">
+            <mat-option *ngFor="let carType of options" [value]="carType.categoryId">
+              {{ carType.categoryName }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 

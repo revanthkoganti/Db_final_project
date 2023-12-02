@@ -16,6 +16,7 @@ export class HomeComponent {
   carForm!:FormGroup
   showcars: boolean=false;
   cars: any;
+  options: any;
   constructor(private fb: FormBuilder,private http:HttpClient,private router:Router
     ,private carservice:CarService) {}
 
@@ -25,6 +26,10 @@ export class HomeComponent {
       pickUpLocation: ['', Validators.required],
       pickUpDate: [null, Validators.required],
       dropOffDate: [null, Validators.required],
+    });
+    let url="http://localhost:8080/category"
+    this.http.get(url).subscribe((res:any)=>{
+      this.options=res.carCategory;
     });
   }
 
@@ -38,8 +43,9 @@ export class HomeComponent {
         "pickupDate": this.carForm.value.pickUpDate,
         "returnDate": this.carForm.value.returnDate,
         "location": this.carForm.value.location,
-        "categoryId": 2
+        "categoryId": this.carForm.value.selectedCarType
       }
+      this.carservice.searchreq=req;
       let url="http://localhost:8080/search";
       this.http.post(url,req).subscribe((res:any)=>{
         if(res.status === "success"){

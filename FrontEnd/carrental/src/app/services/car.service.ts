@@ -7,4 +7,6 @@ export class CarService {
 
   constructor() { }
   selectedcar:any;
+  searchreq:any;
+  licenseNumber:any;
 }

@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -9,14 +11,38 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CheckoutComponent {
   carForm!: FormGroup;
-  constructor(public carservice:CarService,private fb: FormBuilder) {}
+  constructor(public carservice:CarService,private fb: FormBuilder,private http:HttpClient
+    ,private router:Router) {}
   ngOnInit() {
     this.carForm = this.fb.group({
       insurance: [false], 
     });
   }
   bookCar(){
-    
+    let req={
+      "bookingId": 2,
+      "pickupDate": this.carservice.searchreq.pickupDate,
+      "returnDate": this.carservice.searchreq.returnDate,
+      "bookingStatus": "CONFIRMED",
+      "carRentalInsurance": {
+        "insuranceCode": "1201"
+      },
+      "car": {
+        "registrationNo": this.carservice.selectedcar.registrationNo
+      },
+      "customer": {
+        "licenseNumber": this.carservice.licenseNumber
+      }
+    }
+    let url="http://localhost:8080/booking";
+    this.http.post(url,req).subscribe((res:any)=>{
+      if(res.status=== true){
+        alert("booking successful");
+        this.router.navigateByUrl("home");
+      }
+    })
   }
+  
+
 
 }
