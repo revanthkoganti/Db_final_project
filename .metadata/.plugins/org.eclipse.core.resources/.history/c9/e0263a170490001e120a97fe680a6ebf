@@ -1,0 +1,5 @@
+package com.uga.carRental.config;
+
+public class WebConfig {
+
+}
