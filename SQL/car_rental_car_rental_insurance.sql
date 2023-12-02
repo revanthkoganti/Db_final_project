@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `car_rental` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `car_rental`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: car_rental
@@ -25,8 +27,8 @@ DROP TABLE IF EXISTS `car_rental_insurance`;
 CREATE TABLE `car_rental_insurance` (
   `insurance_code` varchar(20) NOT NULL,
   `coverage_type` varchar(45) DEFAULT NULL,
-  `insurance_name` varchar(45) DEFAULT NULL,
-  `insurance_cost_per_day` float DEFAULT NULL,
+  `insurance_name` varchar(100) DEFAULT NULL,
+  `insurance_cost_per_day` int NOT NULL,
   PRIMARY KEY (`insurance_code`),
   UNIQUE KEY `insurance_id_UNIQUE` (`insurance_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -38,6 +40,7 @@ CREATE TABLE `car_rental_insurance` (
 
 LOCK TABLES `car_rental_insurance` WRITE;
 /*!40000 ALTER TABLE `car_rental_insurance` DISABLE KEYS */;
+INSERT INTO `car_rental_insurance` VALUES ('1201','COLLISION DAMAGE WAIVER','Covers theft and total damage to the rental car',15),('1202','SUPPLEMENTAL LIABILITY PROTECTION','Covers damage done to others',12),('1203','PERSONAL ACCIDENT INSURANCE','Covers medical costs for driver and passengers',10),('1204','PERSONAL EFFECTS COVERAGE','Covers theft of personal belongings',5);
 /*!40000 ALTER TABLE `car_rental_insurance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01 19:22:18
+-- Dump completed on 2023-12-02 18:36:30

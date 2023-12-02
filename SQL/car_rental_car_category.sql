@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `car_rental` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `car_rental`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: car_rental
@@ -26,11 +28,10 @@ CREATE TABLE `car_category` (
   `category_id` int NOT NULL AUTO_INCREMENT,
   `category_name` varchar(45) DEFAULT NULL,
   `no_of_persons` int DEFAULT NULL,
-  `bootspace` varchar(45) DEFAULT NULL,
-  `cost_per_day` int DEFAULT NULL,
+  `cost_per_day` double NOT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `category_id_UNIQUE` (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +40,7 @@ CREATE TABLE `car_category` (
 
 LOCK TABLES `car_category` WRITE;
 /*!40000 ALTER TABLE `car_category` DISABLE KEYS */;
+INSERT INTO `car_category` VALUES (1,'SUV',5,60),(2,'Sedan',5,50);
 /*!40000 ALTER TABLE `car_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01 19:22:17
+-- Dump completed on 2023-12-02 18:36:30

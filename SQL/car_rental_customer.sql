@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `car_rental` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `car_rental`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: car_rental
@@ -23,16 +25,16 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `licenseNumber` varchar(20) NOT NULL,
-  `firstname` varchar(45) DEFAULT NULL,
-  `lastname` varchar(45) DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
-  `phoneNumber` varchar(10) NOT NULL,
   `address` text,
-  `password` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`licenseNumber`),
-  UNIQUE KEY `customer_id_UNIQUE` (`licenseNumber`),
-  UNIQUE KEY `phoneNumber_UNIQUE` (`phoneNumber`),
+  `email` varchar(100) DEFAULT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(10) DEFAULT NULL,
+  `license_number` varchar(20) NOT NULL,
+  PRIMARY KEY (`license_number`),
+  UNIQUE KEY `licenseNumber_UNIQUE` (`license_number`),
+  UNIQUE KEY `phoneNumber_UNIQUE` (`phone_number`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -43,6 +45,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES ('734 preston woods trail sandy springs','revanthkoganti@gmail.com','Revanth','Koganti','$2a$10$jLv31de85sRAtZ9isLzpJOJyem0oSMRf9naTH3bv8ZruJwy/ScY8u','4043996253','ABBC112345'),('123 Main St, City','john.doe@example.com','John','Doe','$2a$10$LDHubBAv2j0vsDAUWg8JCOibUay6e/3t/ryMLqbZfqevFmwyHAwem','1234567890','ANC1234434');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01 19:22:18
+-- Dump completed on 2023-12-02 18:36:30

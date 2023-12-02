@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `car_rental` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `car_rental`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: car_rental
@@ -24,21 +26,21 @@ DROP TABLE IF EXISTS `booking`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `booking` (
   `booking_id` int NOT NULL AUTO_INCREMENT,
-  `from_date_and_time` datetime DEFAULT NULL,
-  `due_return_date_and_time` datetime DEFAULT NULL,
+  `pickup_date` date DEFAULT NULL,
+  `return_date` date DEFAULT NULL,
   `booking_status` varchar(50) DEFAULT NULL,
   `insurance_code` varchar(20) DEFAULT NULL,
   `registration_no` varchar(20) DEFAULT NULL,
-  `licence_no` varchar(20) DEFAULT NULL,
+  `license_number` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`booking_id`),
   UNIQUE KEY `booking_id_UNIQUE` (`booking_id`),
-  KEY `fk_1_idx` (`licence_no`),
   KEY `fk_2_idx` (`registration_no`),
   KEY `fk_3_idx` (`insurance_code`),
-  CONSTRAINT `fk_1` FOREIGN KEY (`licence_no`) REFERENCES `customer` (`licenseNumber`),
+  KEY `FKqyvvt4r7590wdh0tej4gohnyp` (`license_number`),
   CONSTRAINT `fk_2` FOREIGN KEY (`registration_no`) REFERENCES `car` (`registration_no`),
-  CONSTRAINT `fk_3` FOREIGN KEY (`insurance_code`) REFERENCES `car_rental_insurance` (`insurance_code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `fk_3` FOREIGN KEY (`insurance_code`) REFERENCES `car_rental_insurance` (`insurance_code`),
+  CONSTRAINT `FKqyvvt4r7590wdh0tej4gohnyp` FOREIGN KEY (`license_number`) REFERENCES `customer` (`license_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,6 +49,7 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+INSERT INTO `booking` VALUES (1,'2023-11-30','2023-12-09','CONFIRMED','1201','1','ANC1234434');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01 19:22:18
+-- Dump completed on 2023-12-02 18:36:30
