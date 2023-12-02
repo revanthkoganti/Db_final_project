@@ -33,10 +33,9 @@ export class LoginuserComponent implements OnInit {
     }
     let url="http://localhost:8080/login";
     this.http.post(url,req).subscribe((res)=>{
-      
+      alert('Login successful!');
       this.router.navigateByUrl("home");
     })
-
     console.log('Form submitted:', this.loginForm.value);
   }
 }

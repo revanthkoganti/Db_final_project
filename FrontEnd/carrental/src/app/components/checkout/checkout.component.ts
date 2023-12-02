@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -7,5 +8,15 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent {
-  constructor(public carservice:CarService) {}
+  carForm!: FormGroup;
+  constructor(public carservice:CarService,private fb: FormBuilder) {}
+  ngOnInit() {
+    this.carForm = this.fb.group({
+      insurance: [false], 
+    });
+  }
+  bookCar(){
+    
+  }
+
 }

@@ -41,7 +41,7 @@ export class RegisteruserComponent implements OnInit {
     }
     let url="http://localhost:4200/register";
     this.http.post(url,req).subscribe((res)=>{
-      
+      alert('Registration successful!');
       this.router.navigateByUrl("loginuser");
     })
     console.log(this.registrationForm.value);

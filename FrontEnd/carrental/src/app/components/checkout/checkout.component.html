@@ -5,5 +5,8 @@
       <p>{{ carservice.selectedcar.mileage }}</p>
       <p>Rental Price: \${{ carservice.selectedcar.rentalPrice }}/day</p>
     </mat-card-content>
-    
+    <mat-form-field>
+      <mat-checkbox formControlName="insurance">Avail Insurance</mat-checkbox>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="bookCar()">Book Car</button>
 </mat-card>
