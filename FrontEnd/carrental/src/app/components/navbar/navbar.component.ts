@@ -14,8 +14,6 @@ export class NavbarComponent {
   register(){
     this.router.navigate(['/registeruser']);
   }
-  //login(){
-    //this._router.navigate(['login']);
-  //}
+  
 
 }
