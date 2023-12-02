@@ -12,6 +12,10 @@ import { CarService } from 'src/app/services/car.service';
 export class CheckoutComponent {
   carForm!: FormGroup;
   insuranceOptions:any;
+  total: number=0;
+  tax:number=0;
+  insurance_amount:number=0;
+  final_amount=0;
   constructor(public carservice:CarService,private fb: FormBuilder,private http:HttpClient
     ,private router:Router) {}
   ngOnInit() {
@@ -22,6 +26,15 @@ export class CheckoutComponent {
     this.http.get(url).subscribe((res:any)=>{
       this.insuranceOptions=res.carRentalInsurance;
     })
+    this.total = this.calculate_total();
+    this.tax= this.total * 0.08;
+    this.final_amount=this.total+this.tax;
+  }
+  calculate_total() {
+    let datedifference = this.getDateDifferenceInDays(this.carservice.searchreq.pickupDate,this.carservice.searchreq.returnDate);
+    let total=this.carservice.selectedcar.costPerDay*datedifference;
+    
+    return total;
   }
   bookCar(){
     let req={
@@ -47,7 +60,24 @@ export class CheckoutComponent {
       }
     })
   }
+  getDateDifferenceInDays(date1: Date, date2: Date): number {
+    // Calculate the time difference in milliseconds
+    const timeDifference = date2.getTime() - date1.getTime();
   
+    // Calculate the number of days
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
+    return daysDifference;
+  }
+  onInsuranceSelected(event: any) {
+    // You can access the selected value using event.value
+    this.insurance_amount=event.value;
+    this.final_amount=this.final_amount+this.insurance_amount;
+    // const selectedInsuranceCode = event.value;
+    // console.log('Selected Insurance Code:', selectedInsuranceCode);
 
+    // Perform any additional logic based on the selected insurance code
+    // For example, update other form controls or perform an action
+  }
 
 }

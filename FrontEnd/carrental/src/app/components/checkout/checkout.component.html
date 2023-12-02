@@ -6,12 +6,17 @@
       <p>Rental Price: \${{ carservice.selectedcar.rentalPrice }}/day</p>
     </mat-card-content>
     <mat-form-field>
-      <mat-radio-group formControlName="selectedInsuranceCode">
+      <mat-radio-group formControlName="selectedInsuranceCode" (change)="onInsuranceSelected($event)">
         <mat-radio-button *ngFor="let insurance of insuranceOptions" [value]="insurance.insuranceCode">
           {{insurance.insuranceName}}
           {{ insurance.coverageType }} - \${{ insurance.insuranceCostPerDay }}/day
         </mat-radio-button>
       </mat-radio-group>
     </mat-form-field>
+    <div>Total Amount :{{total}}</div>
+    <div> 8% Tax :{{tax}}</div>
+    <div>Insurance Amount :{{insurance_amount}}</div>
+    <div>Total Amount + Tax :{{final_amount}}</div>
+   
     <button mat-button color="primary" (click)="bookCar()">Book Car</button>
 </mat-card>
