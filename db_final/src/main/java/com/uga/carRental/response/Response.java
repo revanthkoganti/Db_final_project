@@ -6,5 +6,5 @@ import lombok.Data;
 public class Response {
 	private String message;
 	private Boolean status;
-	
+	private String licenseNumber;
 }

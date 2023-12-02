@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService {
 		if ((customer.getEmail().toString().equals(email)) && passwordMatcher) {
 			response.setMessage("Login Successful");
 			response.setStatus(Boolean.TRUE);
+			response.setLicenseNumber(customer.getLicenseNumber());
 			return response;
 		} else {
 			response.setMessage("Login failed");
