@@ -48,7 +48,7 @@ export class HomeComponent {
       this.carservice.searchreq=req;
       let url="http://localhost:8080/search";
       this.http.post(url,req).subscribe((res:any)=>{
-        if(res.status === "success"){
+        if(res.status === "Success"){
           this.cars=res.cars;
           this.showcars=true;
           this.cdr.detectChanges();
