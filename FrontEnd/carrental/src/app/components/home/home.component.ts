@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -37,13 +38,13 @@ export class HomeComponent {
   // Properties for storing form data
   
   carForm!:FormGroup
-  constructor(private fb: FormBuilder) {}
+  showcars: boolean=false;
+  constructor(private fb: FormBuilder,private http:HttpClient) {}
 
   ngOnInit() {
      this.carForm= this.fb.group({
       selectedCarType: ['', Validators.required],
       pickUpLocation: ['', Validators.required],
-      dropOffLocation: ['', Validators.required],
       pickUpDate: [null, Validators.required],
       dropOffDate: [null, Validators.required],
     });
@@ -55,6 +56,19 @@ export class HomeComponent {
     // For example, you can filter the cars array based on the selected criteria.
     //console.log('Search Cars:', this.selectedCarType, this.pickUpLocation, this.dropOffLocation, this.pickUpDate, this.dropOffDate);
     if (this.carForm.valid) {
+      let req={
+        "pickupDate": this.carForm.value.pickUpDate,
+        "returnDate": this.carForm.value.returnDate,
+        "location": this.carForm.value.location,
+        "categoryId": 2
+      }
+      let url="http://localhost:8080/search";
+      this.http.post(url,req).subscribe((res:any)=>{
+        if(res.status === "success"){
+          this.cars=res.cars;
+          this.showcars=true;
+        }
+      })
       // Perform the form submission logic here
       console.log('Form submitted!', this.carForm.value);
     }

@@ -50,12 +50,12 @@
   </mat-card>
 </section>
 
-<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" *ngIf="showcars">
   <mat-card fxFlex="calc(25% - 20px)" fxFlex.gt-sm="calc(25% - 20px)" *ngFor="let car of cars" class="car-card">
-    <img [src]="car.imageUrl" alt="{{ car.brand }} {{ car.model }}" mat-card-image />
+    <img [src]="car.carImage" alt="{{ car.brand }} {{ car.model }}" mat-card-image />
     <mat-card-content>
       <h3>{{ car.brand }} {{ car.model }}</h3>
-      <p>{{ car.year }}</p>
+      <p>{{ car.mileage }}</p>
       <p>Rental Price: \${{ car.rentalPrice }}/day</p>
     </mat-card-content>
     <mat-card-actions>
