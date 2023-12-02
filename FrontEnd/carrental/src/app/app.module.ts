@@ -21,6 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     HttpClientModule,
     MatNativeDateModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

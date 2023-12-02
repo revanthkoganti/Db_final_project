@@ -11,6 +11,7 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CheckoutComponent {
   carForm!: FormGroup;
+  insuranceOptions:any;
   constructor(public carservice:CarService,private fb: FormBuilder,private http:HttpClient
     ,private router:Router) {}
   ngOnInit() {
