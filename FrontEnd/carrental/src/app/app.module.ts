@@ -9,6 +9,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisteruserComponent } from './components/registeruser/registeruser.component';
 import { LoginuserComponent } from './components/loginuser/loginuser.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,11 @@ import { LoginuserComponent } from './components/loginuser/loginuser.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatToolbarModule, 
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
