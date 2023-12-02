@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class RegisteruserComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private http:HttpClient,private _snackBar: MatSnackBar,
+  constructor(private formBuilder: FormBuilder,private http:HttpClient,
     private router:Router) {
     this.registrationForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -41,7 +41,7 @@ export class RegisteruserComponent implements OnInit {
     }
     let url="http://localhost:4200/register";
     this.http.post(url,req).subscribe((res)=>{
-      this._snackBar.open("Successful Registration", "Done");
+      
       this.router.navigateByUrl("loginuser");
     })
     console.log(this.registrationForm.value);

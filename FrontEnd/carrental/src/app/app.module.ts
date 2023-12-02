@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+
 import { CheckoutComponent } from './components/checkout/checkout.component';
 @NgModule({
   declarations: [
@@ -40,9 +40,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     CommonModule,
     MatInputModule,
     MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSnackBar
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

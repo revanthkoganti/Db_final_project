@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class LoginuserComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private http:HttpClient,private _snackBar: MatSnackBar,
+  constructor(private formBuilder: FormBuilder,private http:HttpClient,
     private router:Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -33,7 +33,7 @@ export class LoginuserComponent implements OnInit {
     }
     let url="http://localhost:8080/login";
     this.http.post(url,req).subscribe((res)=>{
-      this._snackBar.open("Login Successful", "Done");
+      
       this.router.navigateByUrl("home");
     })
 
