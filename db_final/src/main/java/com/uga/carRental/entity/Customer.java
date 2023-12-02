@@ -2,6 +2,7 @@ package com.uga.carRental.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -11,8 +12,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Customer {
-
+    @Id
 	private String licenseNumber;
+
 	@Column(name = "firstname")
 	private String firstName;
 	@Column(name = "lastname")
@@ -94,7 +96,7 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+
+
+
 }

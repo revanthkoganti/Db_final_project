@@ -15,28 +15,28 @@ import jakarta.validation.Valid;
 
 @RestController
 public class CustomerController {
-	
+
 	@Autowired
 	UserService userService;
-	
+
 
 	@GetMapping("/api")
 	public String healthCheck() {
 		System.out.println("Health check API");
 		return "Up and running";
 	}
-	
+
 	@PostMapping("/login")
 	public ResponseEntity<?> signIn(@Valid @RequestBody LoginRequest request){
-		
+
 		return userService.signIn(request);
-		
-		
+
+
 	}
-	
+
 	@PostMapping("/register")
 	public ResponseEntity<?>register(@Valid @RequestBody Customer customer){
 		return userService.register(customer);
-		
+
 	}
 }

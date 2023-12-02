@@ -3,6 +3,7 @@ package com.uga.carRental.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.uga.carRental.entity.Customer;
@@ -32,11 +33,19 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public ResponseEntity<?> register(@Valid Customer customer) {
-		
+
 		Customer customerData = repo.findByEmail(customer.getEmail());
-		
-		
-		return null;
+		if (customerData == null) {
+
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			String encryptedPassword = encoder.encode(customer.getPassword());
+			customer.setPassword(encryptedPassword);
+			repo.save(customer);
+			return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("User registration failed", HttpStatus.BAD_REQUEST);
+		}
+
 	}
 
 }
