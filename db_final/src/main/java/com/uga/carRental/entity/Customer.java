@@ -15,9 +15,8 @@ public class Customer {
     @Id
 	private String licenseNumber;
 
-	@Column(name = "firstname")
 	private String firstName;
-	@Column(name = "lastname")
+
 	private String lastName;
 	private String phoneNumber;
 	private String address;
@@ -95,6 +94,10 @@ public class Customer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Customer(){
+		super();
 	}
 
 
