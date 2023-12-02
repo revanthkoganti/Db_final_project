@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -18,7 +18,7 @@ export class HomeComponent {
   cars: any;
   options: any;
   constructor(private fb: FormBuilder,private http:HttpClient,private router:Router
-    ,private carservice:CarService) {}
+    ,private carservice:CarService,private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
      this.carForm= this.fb.group({
@@ -51,6 +51,7 @@ export class HomeComponent {
         if(res.status === "success"){
           this.cars=res.cars;
           this.showcars=true;
+          this.cdr.detectChanges();
         }
       })
       // Perform the form submission logic here
