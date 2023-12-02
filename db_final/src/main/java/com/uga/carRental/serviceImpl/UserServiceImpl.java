@@ -15,9 +15,11 @@ import com.uga.carRental.entity.CarSearchFilter;
 import com.uga.carRental.entity.Customer;
 import com.uga.carRental.entity.LoginRequest;
 import com.uga.carRental.response.Response;
+import com.uga.carRental.response.CategoryResponse;
 import com.uga.carRental.response.FilterResponse;
 import com.uga.carRental.response.InsuranceResponse;
 import com.uga.carRental.repo.BookingRepo;
+import com.uga.carRental.repo.CarCategoryRepo;
 import com.uga.carRental.repo.CarRentalInsuranceRepo;
 import com.uga.carRental.repo.CarRepo;
 import com.uga.carRental.repo.UserRepo;
@@ -40,6 +42,10 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	CarRentalInsuranceRepo carRentalInsuranceRepo;
+	
+	@Autowired
+	CarCategoryRepo carCategoryRepo;
+	
 	@Override
 	public Response signIn(@Valid LoginRequest request) {
 		String email = request.getEmail();
@@ -137,6 +143,13 @@ public class UserServiceImpl implements UserService {
 	public InsuranceResponse getAllInsurance() {
 		InsuranceResponse response = new InsuranceResponse();
 		response.setCarRentalInsurance(carRentalInsuranceRepo.findAll());
+		response.setStatus("Success");
+
+		return response;
+	}
+	public CategoryResponse getAllCategory() {
+		CategoryResponse response = new CategoryResponse();
+		response.setCarCategory(carCategoryRepo.findAll());
 		response.setStatus("Success");
 
 		return response;

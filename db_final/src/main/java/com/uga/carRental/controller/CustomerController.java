@@ -17,6 +17,7 @@ import com.uga.carRental.entity.Booking;
 import com.uga.carRental.entity.Car;
 import com.uga.carRental.entity.Customer;
 import com.uga.carRental.entity.LoginRequest;
+import com.uga.carRental.response.CategoryResponse;
 import com.uga.carRental.response.FilterResponse;
 import com.uga.carRental.response.InsuranceResponse;
 import com.uga.carRental.response.Response;
@@ -52,7 +53,7 @@ public class CustomerController {
 		return userService.register(customer);
 
 	}
-    @GetMapping("/search")
+    @PostMapping("/search")
     public FilterResponse searchAndFilterCars(@RequestBody CarSearchFilter searchFilter) {
 
     	FilterResponse filteredCars = userService.searchAndFilterCars(searchFilter);
@@ -66,7 +67,14 @@ public class CustomerController {
 
         return insuranceResponse;
     }
-    @PostMapping("/booking")
+    @GetMapping("/category")
+    public CategoryResponse getAllCategory(HttpServletRequest request) {
+
+    	CategoryResponse categoryResponse = userService.getAllCategory();
+
+        return categoryResponse;
+        
+    }@PostMapping("/booking")
     public Response addBooking(@RequestBody Booking booking) {
         try {
   

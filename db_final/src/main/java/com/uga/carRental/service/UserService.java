@@ -7,6 +7,7 @@ import com.uga.carRental.entity.Car;
 import com.uga.carRental.entity.CarSearchFilter;
 import com.uga.carRental.entity.Customer;
 import com.uga.carRental.entity.LoginRequest;
+import com.uga.carRental.response.CategoryResponse;
 import com.uga.carRental.response.FilterResponse;
 import com.uga.carRental.response.InsuranceResponse;
 import com.uga.carRental.response.Response;
@@ -22,6 +23,8 @@ public interface UserService {
 	FilterResponse searchAndFilterCars(CarSearchFilter searchFilter); 
 	
 	Response addBooking(Booking booking);
+	
+	CategoryResponse getAllCategory();
 	
 	InsuranceResponse getAllInsurance();
 }
