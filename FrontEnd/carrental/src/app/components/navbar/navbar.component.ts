@@ -14,8 +14,8 @@ export class NavbarComponent {
   register(){
     this.router.navigate(['/registeruser']);
   }
-  login(){
-    this.router.navigate(['/loginuser']);
+  logout(){
+    this.router.navigate(['/home']);
   }
 
 }
