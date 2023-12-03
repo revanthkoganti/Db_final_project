@@ -7,6 +7,7 @@ import { RegisteruserComponent } from './components/registeruser/registeruser.co
 import { LoginuserComponent } from './components/loginuser/loginuser.component';
 import { HomeComponent } from './components/home/home.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'registeruser', component: RegisteruserComponent },
   {path:'loginuser',component:LoginuserComponent},
   {path:'checkout',component:CheckoutComponent},
+  {path:'about',component:AboutComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

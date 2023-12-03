@@ -22,5 +22,10 @@ export class NavbarComponent {
   login(){
     this.router.navigate(['/loginuser']);
   }
-
+  Home(){
+    this.router.navigate(['/home']);
+  }
+  about(){
+    this.router.navigate(['/about']);
+  }
 }

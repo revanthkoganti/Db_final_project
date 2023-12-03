@@ -23,6 +23,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HomeComponent,
     NavbarComponent,
     LoginuserComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

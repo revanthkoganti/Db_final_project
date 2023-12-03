@@ -2,7 +2,8 @@
   <mat-toolbar color="primary">
     
     <span>Car Rental App</span>
-    
+    <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="Home()">Home</button>
+    <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="about()">About US</button>
     <span class="example-spacer"></span>
     <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="login()">Login</button>
     <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="register()">Register</button>
