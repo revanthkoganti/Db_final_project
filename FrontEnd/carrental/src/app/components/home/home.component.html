@@ -46,10 +46,14 @@
     </mat-card-content>
   </mat-card>
 </section>
-<div *ngIf="showcars">
-<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" >
-  <mat-card fxFlex="calc(25% - 20px)" fxFlex.gt-sm="calc(25% - 20px)" *ngFor="let car of cars" class="car-card">
+<div *ngIf="showcars" class="align_cars">
+  
+    
+      
+    <mat-card *ngFor="let car of cars" class="car-card">
+      <div class="image-container">
     <img [src]="car.carImage" alt="{{ car.brand }} {{ car.model }}" mat-card-image />
+  </div>
     <mat-card-content>
       <h3>{{ car.brand }} {{ car.model }}</h3>
       <p>{{ car.mileage }}</p>
@@ -59,7 +63,7 @@
       <button mat-button color="primary" (click)="rent(car)">Rent Now</button>
     </mat-card-actions>
   </mat-card>
-</div>
+
 </div>
 
 
