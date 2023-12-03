@@ -8,20 +8,20 @@
   </mat-card-content>
 
   <!-- Using mat-form-field as a container for the radio group -->
-  <div [formGroup]="carForm">
-
-    <mat-form-field>
-      <mat-label>Insurance</mat-label>
-      <mat-select formControlName="insurance" (selectionChange)="onInsuranceSelected($event)">
-        <mat-option *ngFor="let insurance of insuranceOptions" [value]="insurance.insuranceCode">
-          {{ insurance.insuranceName }} - ${{ insurance.insuranceCostPerDay }}/day
-        </mat-option>
-      </mat-select>
-      <mat-hint>Choose your insurance option</mat-hint>
-    </mat-form-field>
+  <form [formGroup]="carForm" >
   
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="insurance">
+      <mat-radio-button class="example-radio-button" *ngFor="let food of insuranceOptions" [value]="food.insuranceCode">
+        {{food.coverageType}}{{food.insuranceName}}
+      </mat-radio-button>
+    </mat-radio-group>
+   
     
-  </div>
+    <button mat-raised-button color="accent">Submit</button>
+  </form>
 
   <div>Total Amount: {{ total }}</div>
   <div>8% Tax: {{ tax }}</div>
