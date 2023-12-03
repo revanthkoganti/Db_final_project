@@ -1,5 +1,6 @@
 <mat-card fxFlex="calc(25% - 20px)" fxFlex.gt-sm="calc(25% - 20px)" class="car-card">
-  <img [src]="carservice.selectedcar.carImage" alt="{{ carservice.selectedcar.brand }} {{ carservice.selectedcar.model }}" mat-card-image />
+  <img [src]="carservice.selectedcar.carImage"
+    alt="{{ carservice.selectedcar.brand }} {{ carservice.selectedcar.model }}" mat-card-image />
   <mat-card-content>
     <h3>{{ carservice.selectedcar.brand }} {{ carservice.selectedcar.model }}</h3>
     <p>{{ carservice.selectedcar.mileage }}</p>
@@ -7,15 +8,20 @@
   </mat-card-content>
 
   <!-- Using mat-form-field as a container for the radio group -->
-  <mat-form-field [formGroup]="carForm">
-    <mat-radio-group formControlName="insurance" (change)="onInsuranceSelected($event)">
-      <div *ngFor="let insurance of insuranceOptions">
-        <mat-radio-button [value]="insurance.insuranceCode">
-          {{ insurance.insuranceName }} - \${{ insurance.insuranceCostPerDay }}/day
-        </mat-radio-button>
-      </div>
-    </mat-radio-group>
-  </mat-form-field>
+  <div [formGroup]="carForm">
+
+    <mat-form-field>
+      <mat-label>Insurance</mat-label>
+      <mat-select formControlName="insurance" (selectionChange)="onInsuranceSelected($event)">
+        <mat-option *ngFor="let insurance of insuranceOptions" [value]="insurance.insuranceCode">
+          {{ insurance.insuranceName }} - ${{ insurance.insuranceCostPerDay }}/day
+        </mat-option>
+      </mat-select>
+      <mat-hint>Choose your insurance option</mat-hint>
+    </mat-form-field>
+  
+    
+  </div>
 
   <div>Total Amount: {{ total }}</div>
   <div>8% Tax: {{ tax }}</div>

@@ -22,6 +22,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDatepickerModule,
     HttpClientModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

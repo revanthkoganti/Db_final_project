@@ -20,7 +20,7 @@ export class CheckoutComponent {
     ,private router:Router) {}
   ngOnInit() {
     this.carForm = this.fb.group({
-      insurance: [null], 
+      insurance: [''], 
     });
     let url="http://localhost:8080/insurance"
     this.http.get(url).subscribe((res:any)=>{
