@@ -83,8 +83,8 @@ export class CheckoutComponent {
   onInsuranceSelected(event: any) {
     // You can access the selected value using event.value
     this.carForm.controls['insurance'].setValue(event.value.insuranceCode);
-
-    this.insurance_amount=event.value.insuranceCostPerDay;
+    let datedifference = this.getDateDifferenceInDays(this.carservice.searchreq.pickupDate,this.carservice.searchreq.returnDate);
+    this.insurance_amount=Number(event.value.insuranceCostPerDay)*Number(datedifference);
     this.final_amount= Number(this.total)+Number(this.tax)+Number(this.insurance_amount);
     // const selectedInsuranceCode = event.value;
     // console.log('Selected Insurance Code:', selectedInsuranceCode);
