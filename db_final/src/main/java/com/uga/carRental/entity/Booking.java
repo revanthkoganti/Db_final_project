@@ -35,4 +35,6 @@ public class Booking {
     @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "licenseNumber")
     private Customer customer;
+    private double totalAmount;
+    private Date paymentDate;
 }

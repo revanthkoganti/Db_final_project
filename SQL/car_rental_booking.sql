@@ -32,6 +32,8 @@ CREATE TABLE `booking` (
   `insurance_code` varchar(20) DEFAULT NULL,
   `registration_no` varchar(20) DEFAULT NULL,
   `license_number` varchar(255) DEFAULT NULL,
+  `total_amount` double DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
   PRIMARY KEY (`booking_id`),
   UNIQUE KEY `booking_id_UNIQUE` (`booking_id`),
   KEY `fk_2_idx` (`registration_no`),
@@ -49,7 +51,6 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (1,'2023-11-30','2023-12-09','CONFIRMED','1201','1','ANC1234434');
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -62,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-02 18:36:30
+-- Dump completed on 2023-12-03 15:31:57

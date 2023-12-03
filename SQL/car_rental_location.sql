@@ -41,7 +41,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'Downtown,Athens','Downtown athens','Athens','Georgia',30605),(2,'Downtown,Atlanta','Downtown,Atlanta','Atlanta','Georgia',30338);
+INSERT INTO `location` VALUES (1,'Atlanta AIRPORT','6000 N Terminal','Atlanta','Georgia',30320),(2,'Athens Downtown','368 Oak St','Athens','Georgia',30601);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-02 18:36:30
+-- Dump completed on 2023-12-03 15:31:57

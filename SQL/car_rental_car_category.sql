@@ -31,7 +31,7 @@ CREATE TABLE `car_category` (
   `cost_per_day` double NOT NULL,
   PRIMARY KEY (`category_id`),
   UNIQUE KEY `category_id_UNIQUE` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `car_category` (
 
 LOCK TABLES `car_category` WRITE;
 /*!40000 ALTER TABLE `car_category` DISABLE KEYS */;
-INSERT INTO `car_category` VALUES (1,'SUV',5,60),(2,'Sedan',5,50);
+INSERT INTO `car_category` VALUES (1,'ECONOMY',5,30),(2,'COMPACT',5,32),(3,'MID SIZE',5,35),(4,'STANDARD',5,38),(5,'FULL SIZE',5,40),(6,'LUXURY CAR',5,75),(7,'MID SIZE SUV',5,36),(8,'STANDARD SUV',5,40),(9,'FULL SIZE SUV',8,60),(10,'MINI VAN',7,70);
 /*!40000 ALTER TABLE `car_category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-02 18:36:30
+-- Dump completed on 2023-12-03 15:31:56
