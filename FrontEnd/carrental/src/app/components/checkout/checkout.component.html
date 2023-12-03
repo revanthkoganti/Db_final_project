@@ -8,12 +8,12 @@
   </mat-toolbar>
 </p>
 <mat-card fxFlex="calc(25% - 20px)" fxFlex.gt-sm="calc(25% - 20px)" class="car-card">
-  <img [src]="carservice.selectedcar.carImage"
-    alt="{{ carservice.selectedcar.brand }} {{ carservice.selectedcar.model }}" mat-card-image />
+  <img [src]="carservice.selectedcar?.carImage"
+    alt="{{ carservice.selectedcar?.brand }} {{ carservice.selectedcar.model }}" mat-card-image />
   <mat-card-content>
     <h3>{{ carservice.selectedcar.brand }} {{ carservice.selectedcar.model }}</h3>
-    <p>{{ carservice.selectedcar.mileage }}</p>
-    <p>Rental Price: \${{ carservice.selectedcar.rentalPrice }}/day</p>
+    <p>Mileage: {{ carservice.selectedcar.mileage }}</p>
+    <p>Rental Price: ${{ carservice.selectedcar.costPerDay }}/day</p>
   </mat-card-content>
 
   <!-- Using mat-form-field as a container for the radio group -->
@@ -22,14 +22,15 @@
     <mat-radio-group
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
-      formControlName="insurance">
-      <mat-radio-button class="example-radio-button" *ngFor="let food of insuranceOptions" [value]="food.insuranceCode">
-        {{food.coverageType}}{{food.insuranceName}}
+      formControlName="insurance"
+      (change)="onInsuranceSelected($event)"
+      >
+      <mat-radio-button class="example-radio-button" *ngFor="let food of insuranceOptions" [value]="food">
+        <p><b>Coverage Type:</b>{{food.coverageType}}</p>
+        <p><b>Insurance Name:</b> {{food.insuranceName}}</p>
+        <p><b>insuranceCostPerDay :</b> {{food.insuranceCostPerDay}}</p>
       </mat-radio-button>
     </mat-radio-group>
-   
-    
-    <button mat-raised-button color="accent">Submit</button>
   </form>
 
   <div>Total Amount: {{ total }}</div>

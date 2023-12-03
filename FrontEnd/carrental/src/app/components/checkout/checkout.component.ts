@@ -27,12 +27,12 @@ export class CheckoutComponent {
       this.insuranceOptions=res.carRentalInsurance;
     })
     this.total = this.calculate_total();
-    this.tax= this.total * 0.08;
-    this.final_amount=this.total+this.tax;
+    this.tax= Number(this.total) * 0.08;
+    this.final_amount=Number(this.total)+Number(this.tax);
   }
   calculate_total() {
     let datedifference = this.getDateDifferenceInDays(this.carservice.searchreq.pickupDate,this.carservice.searchreq.returnDate);
-    let total=this.carservice.selectedcar.costPerDay*datedifference;
+    let total=Number(this.carservice.selectedcar.costPerDay)*Number(datedifference);
     
     return total;
   }
@@ -71,8 +71,10 @@ export class CheckoutComponent {
   }
   onInsuranceSelected(event: any) {
     // You can access the selected value using event.value
-    this.insurance_amount=event.value;
-    this.final_amount=this.final_amount+this.insurance_amount;
+    this.carForm.controls['insurance'].setValue(event.insuranceCode);
+
+    this.insurance_amount=event.value.insuranceCostPerDay;
+    this.final_amount= Number(this.total)+Number(this.tax)+Number(this.insurance_amount);
     // const selectedInsuranceCode = event.value;
     // console.log('Selected Insurance Code:', selectedInsuranceCode);
 
