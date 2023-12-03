@@ -38,6 +38,7 @@ export class LoginuserComponent implements OnInit {
     this.http.post(url, req).subscribe((res: any) => {
       this.carservice.licenseNumber = res.licenseNumber;
       alert('Login successful!');
+      this.carservice.isloggedin=true;
       this.router.navigateByUrl("/home");
     });
 

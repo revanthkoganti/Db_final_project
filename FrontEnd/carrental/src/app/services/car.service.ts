@@ -9,4 +9,5 @@ export class CarService {
   selectedcar:any;
   searchreq:any;
   licenseNumber:any;
+  isloggedin:boolean=false;
 }

@@ -4,7 +4,9 @@
     <span>Car Rental App</span>
     
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+    <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="login()">Login</button>
+    <button mat-raised-button color="primary" *ngIf="!carservice.isloggedin" (click)="register()">Register</button>
+    <button mat-raised-button color="primary" *ngIf="carservice.isloggedin" (click)="logout()">Logout</button>
   </mat-toolbar>
 </p>
 
