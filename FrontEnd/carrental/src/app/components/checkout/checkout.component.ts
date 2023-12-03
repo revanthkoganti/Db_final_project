@@ -43,7 +43,7 @@ export class CheckoutComponent {
     const day = currentDate.getDate().toString().padStart(2, '0');
     const year = currentDate.getFullYear();
   
-    return `${month}/${day}/${year}`;
+    return `${year}-${month}-${day}`;
   }
   bookCar(){
     let dt=this.getCurrentDate();
