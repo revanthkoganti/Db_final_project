@@ -56,11 +56,12 @@
   </div>
     <mat-card-content>
       <h3>{{ car.brand }} {{ car.model }}</h3>
-      <p>{{ car.mileage }}</p>
-      <p>Rental Price: \${{ car.rentalPrice }}/day</p>
+      <h4>Mileage:<p>{{ car.mileage }}</p></h4>
+      <p>Rental Price: ${{ car.costPerDay }}/day</p>
+      <button mat-raised-button color="primary" (click)="rent(car)">Rent Now</button>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button color="primary" (click)="rent(car)">Rent Now</button>
+      
     </mat-card-actions>
   </mat-card>
 
