@@ -33,7 +33,7 @@ public class Booking {
     private Car car;
     
     @ManyToOne(targetEntity = Customer.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "licenseNumber")
+    @JoinColumn(name = "license_number")
     private Customer customer;
     private double totalAmount;
     private Date paymentDate;

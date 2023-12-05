@@ -135,9 +135,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public Response addBooking(Booking booking) {
+		bookingRepo.save(booking);
+		
 		Response response = new Response();
 		response.setStatus(Boolean.TRUE);
-		response.setMessage("Booking added successfully with ID: " + booking.getBookingId());
+		response.setMessage("Booking added successfully");
 		return response;
 		
 	}
